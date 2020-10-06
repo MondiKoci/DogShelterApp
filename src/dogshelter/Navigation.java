@@ -16,11 +16,14 @@ import java.util.concurrent.TimeUnit;
 public class Navigation {
     private static int swValue;
     //Set and reset colors
-    private static final String COLOR_GREEN = "\u001B[32;9m";
-    private static final String COLOR_RED = "\u001B[11m";
-    private static final String COLOR_RESET = "\u001B[0m";
+    private static final String COLOR_GREEN = "\033[32m";
+    private static final String COLOR_RED = "\033[31m";
+    private static final String COLOR_RESET = "\033[0m";
     private static boolean hasManager = false;
     private static int selection;
+    
+    //System.out.println("\033[31;1mHello\033[0m, \033[32;1;2mworld!\033[0m");
+    //System.out.println("\033[31mRed\033[32m, Green\033[33m, Yellow\033[34m, Blue\033[0m");
     
     private static ShelterManager manager;
     public static void selectionMenu(){
@@ -79,16 +82,22 @@ public class Navigation {
             selection();
             break;
         case 5:
-            System.exit(0);
+            manager.updateHomeStatus();
+            System.out.println();
+            try{
+            TimeUnit.MILLISECONDS.sleep(1200);
+            }catch(Exception e){
+            }
+            selection();
             break;
         case 6:
             System.exit(0);
             break;
         default:
-            System.out.println(COLOR_RED+"Invalid selectionasas!"+COLOR_RESET);
+            System.out.println(COLOR_RED+"Invalid selection!"+COLOR_RESET);
             System.out.println();
             selection();
-            break; // This break is not really necessary
+            break;
         }
     }
     

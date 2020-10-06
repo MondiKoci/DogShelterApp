@@ -77,11 +77,7 @@ public class ShelterManager {
         Dog temp = new Dog(id, name, age, breed, sex, foundHome);
         dogList.add(temp);
         
-        System.out.println(COLOR_GREEN+"SUCCESS! Dog added in the system!"+COLOR_RESET);
-        try{
-            TimeUnit.MILLISECONDS.sleep(1200);
-        }catch(Exception e){
-        }        
+        System.out.println(COLOR_GREEN+"SUCCESS! Dog added in the system!"+COLOR_RESET);       
     }
     
     //*******************************
@@ -112,6 +108,41 @@ public class ShelterManager {
             System.out.println(COLOR_RED+"There are no dogs in the system yet!"+COLOR_RESET);
         }  
     }
+    
+    //Adopt a dog
+    //View a dog using a dog id
+    public static void updateHomeStatus(){
+        System.out.print("Enter the ID of the dog to be adopted: ");
+        input = new Scanner(System.in);
+        dogId = input.next();
+        int Dogid;
+        while(!DataValidator.isIdCorrect(dogId)){
+            System.out.println(COLOR_RED+"Incorrect entry: Please enter a correct id (e.g 1): "+COLOR_RESET);
+            dogId = input.next();
+        }
+        Dogid = Integer.parseInt((dogId));
+        if(dogList.size() > 0){
+            for (int i = 0; i < dogList.size(); i++) {
+                if(searchDog(Dogid) != null){
+                    if(!searchDog(Dogid).isFoundHome()){
+                        System.out.println();
+                        System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+                        + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
+                        searchDog(Dogid).setFoundHome(true);
+                        System.out.println(searchDog(Dogid));
+                        System.out.println();
+                        System.out.println(COLOR_GREEN+"Home status for dog with ID ("+ Dogid+") successfully updated!"+COLOR_RESET);
+                    }else{
+                        System.out.println(COLOR_RED+"The dog with id ("+Dogid+") is already adopted!"+COLOR_RESET);
+                    }
+                }else{
+                    System.out.println(COLOR_RED+"There is not dog with that id!"+COLOR_RESET);
+                }
+            }
+        }else{
+            System.out.println(COLOR_RED+"There are no dogs in the system yet!"+COLOR_RESET);
+        }  
+    }
             
     //Search a dog; return dog object if found
     private static Dog searchDog(int id){
@@ -126,34 +157,31 @@ public class ShelterManager {
     
     //View all dogs registered in the system
     public static void viewAllDogs(){
-        System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
-                + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
-        for (int i = 0; i < dogList.size(); i++) {
-            System.out.println(dogList.get(i));
-        }
-    }
-   
-    //Update a dog's home status to adopted
-    public void adoptDog(int id){
-        System.out.print("Please enter dog ID ");
-        Dog temp = searchDog(id);
-        if(temp != null){
-            temp.setFoundHome(true);
+        if(dogList.size() > 0){
+            System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+                    + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
+            for (int i = 0; i < dogList.size(); i++) {
+                System.out.println(dogList.get(i));
+            }
         }else{
-            System.out.println("No dog was found with that ID!");
+            System.out.println(COLOR_RED+"There are no dogs in the system yet!"+COLOR_RESET);
         }
     }
     
     //View only dogs available for adoption
     public void viewAvailableDogs(){
-        System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
-                + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
-        for (int i = 0; i < dogList.size(); i++) {
-            if(!dogList.get(i).isFoundHome()){
-                System.out.println(dogList.get(i));
-            }else{
-                continue;
+        if(dogList.size() > 0){
+            System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+                    + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
+            for (int i = 0; i < dogList.size(); i++) {
+                if(!dogList.get(i).isFoundHome()){
+                    System.out.println(dogList.get(i));
+                }else{
+                    continue;
+                }
             }
+        }else{
+            System.out.println(COLOR_RED+"There are no dogs in the system yet!"+COLOR_RESET);
         }
     }
     
