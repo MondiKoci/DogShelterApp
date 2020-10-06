@@ -26,7 +26,7 @@ public class ShelterManager {
     //Static field for searching dog ID
     private static String dogId;
     
-    //Initialize a ShelterManager object and an ArraList to store all dog objects
+    //Initialize a ShelterManager object and an ArrayList to store all dog objects
     public ShelterManager(){
         dogList = new ArrayList<Dog>();
     }
@@ -43,7 +43,7 @@ public class ShelterManager {
         input = new Scanner(System.in);
         name = input.nextLine();
         while(!DataValidator.isStringOnlyAlphabet(name)){
-            System.out.print("Please enter a valid name (use only alphabetic characters): ");
+            System.out.print(COLOR_RED+"Please enter a valid name (use only alphabetic characters): "+COLOR_RESET);
             name = input.nextLine(); //Store the valid name
         }
         
@@ -53,7 +53,7 @@ public class ShelterManager {
         String Age = input.nextLine();
         
         while(!DataValidator.isAgeInRange(Age)){
-            System.out.print("Please enter a valid age (between 0 - 25): "); 
+            System.out.print(COLOR_RED+"Please enter a valid age (between 0 - 25): "+COLOR_RESET); 
             input = new Scanner(System.in);
             Age = input.next();
         }
@@ -63,7 +63,7 @@ public class ShelterManager {
         System.out.print("Enter breed: ");
         breed = input.next();
         while(!DataValidator.isStringOnlyAlphabet(breed)){
-            System.out.print("Enter breed (only alphabetic characters allowed): ");
+            System.out.print(COLOR_RED+"Enter breed (only alphabetic characters allowed): "+COLOR_RESET);
             breed = input.next();
         }
         
@@ -71,7 +71,7 @@ public class ShelterManager {
         System.out.print("Enter sex (F for female, M for male): ");
         sex = input.next().charAt(0);
         while(!DataValidator.isSexChar(sex)){
-            System.out.print("Please enter correct sex (F for female, M for male): ");
+            System.out.print(COLOR_RED+"Please enter correct sex (F for female, M for male): "+COLOR_RESET);
             sex = input.next().charAt(0);
         }
         Dog temp = new Dog(id, name, age, breed, sex, foundHome);
@@ -97,7 +97,7 @@ public class ShelterManager {
         if(dogList.size() > 0){
             for (int i = 0; i < dogList.size(); i++) {
                 if(searchDog(Dogid) != null){
-                    System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+                    System.out.println(COLOR_GREEN + "ID\t\tName\t\tAge\t\t"
                     + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
                     System.out.println(searchDog(Dogid));
                 }else{
@@ -158,7 +158,7 @@ public class ShelterManager {
     //View all dogs registered in the system
     public static void viewAllDogs(){
         if(dogList.size() > 0){
-            System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+            System.out.println(COLOR_GREEN + "ID\t\tName\t\tAge\t\t"
                     + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
             for (int i = 0; i < dogList.size(); i++) {
                 System.out.println(dogList.get(i));
@@ -171,7 +171,7 @@ public class ShelterManager {
     //View only dogs available for adoption
     public void viewAvailableDogs(){
         if(dogList.size() > 0){
-            System.out.println(COLOR_RED + "ID\t\tName\t\tAge\t\t"
+            System.out.println(COLOR_GREEN + "ID\t\tName\t\tAge\t\t"
                     + "Breed\t\tSex\t\tFound Home" + COLOR_RESET);
             for (int i = 0; i < dogList.size(); i++) {
                 if(!dogList.get(i).isFoundHome()){

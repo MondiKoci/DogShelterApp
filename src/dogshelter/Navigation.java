@@ -146,7 +146,6 @@ class Keyin {
     }
   }
   
-  //Method to 
   public static String inString() {
     int aChar;
     String s = "";
