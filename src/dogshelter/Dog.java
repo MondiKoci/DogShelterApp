@@ -89,9 +89,5 @@ public class Dog {
     public String toString(){
         String displayInfo = dogId+"\t\t"+name+"\t\t"+age+"\t\t"+breed+"\t\t"+sex+"\t\t"+foundHome;
         return displayInfo;
-    }
-    
-    
-    
-    
+    }  
 }

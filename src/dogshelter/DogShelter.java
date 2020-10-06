@@ -9,7 +9,10 @@ import java.util.Scanner;
 
 /**
  *
- * @author Mondi
+ * @author Mondi Koci
+ * Student ID: 101282062
+ * COMP2130 - Application Development
+ * 
  */
 public class DogShelter {
 
@@ -17,15 +20,6 @@ public class DogShelter {
      * @param args the command line arguments
      */
     public static void main(String[] args){
-        
-        //ShelterManager manager = new ShelterManager();
-        //manager.addDog();
-        //manager.adoptDog(1);
-        
-        //manager.viewAllDogs();
         Navigation.selectionMenu();
-        
-        
-    }
-    
+    } 
 }
