@@ -5,6 +5,8 @@
  */
 package dogshelter;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Mondi
@@ -14,14 +16,16 @@ public class DogShelter {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        ShelterManager manager = new ShelterManager(3);
-        manager.addDog(123, "Dog", 12, "Pitbull", 'F', false);
-        manager.addDog(222, "Mog", 2, "Pincher", 'M', false);
-        manager.addDog(333, "FogMogd", 4, "Mincher", 'F', false);
-        manager.adoptDog(123);
+    public static void main(String[] args){
         
-        manager.viewAllDogs();
+        //ShelterManager manager = new ShelterManager();
+        //manager.addDog();
+        //manager.adoptDog(1);
+        
+        //manager.viewAllDogs();
+        Navigation.selectionMenu();
+        
+        
     }
     
 }

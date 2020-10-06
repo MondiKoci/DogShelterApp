@@ -9,13 +9,14 @@ package dogshelter;
  *
  * @author Mondi
  */
+
 public class Dog {
-    private int dogId; // Must be unique
+    private static int dogId; // Must be unique
     private String name;
     private double age; // between 0 - 25
     private String breed;
     private char sex; //M for male F for female
-    private boolean foundHome;
+    private boolean foundHome = false;
     
     //Default dog constructor
     public Dog(){
