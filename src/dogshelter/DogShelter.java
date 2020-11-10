@@ -10,8 +10,6 @@ import java.util.Scanner;
 /**
  *
  * @author Mondi Koci
- * Student ID: 101282062
- * COMP2130 - Application Development
  * 
  */
 public class DogShelter {
